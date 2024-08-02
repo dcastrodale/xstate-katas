@@ -1,6 +1,10 @@
 import { createRequestHandler } from '@remix-run/express';
 import { ServerBuild } from '@remix-run/node';
 import express from 'express';
+import invariant from 'tiny-invariant';
+
+let port = process.env.PORT;
+invariant(port, 'Missing PORT from your env vars');
 
 const app = express();
 
@@ -32,7 +36,7 @@ if (process.env.NODE_ENV === 'production') {
     })
   );
 
-  app.listen(3000, () => {
-    console.log('App listening on http://localhost:3000');
+  app.listen(port, () => {
+    console.log(`Listening on port ${port}`);
   });
 }

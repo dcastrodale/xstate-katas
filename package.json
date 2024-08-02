@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "test",
-    "dev": "node --watch-path server.ts --watch-path app/lib --import tsx/esm ./server.ts"
+    "dev": "node --watch-path server.ts --env-file=.env --watch-path app/lib --import tsx/esm ./server.ts"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,7 @@
     "isbot": "^4.4.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "tiny-invariant": "^1.3.3",
     "tsx": "^4.16.5"
   },
   "devDependencies": {
