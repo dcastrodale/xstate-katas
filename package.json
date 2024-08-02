@@ -1,0 +1,19 @@
+{
+  "name": "xstate-katas",
+  "version": "0.0.1",
+  "description": "A collection of katas for the XState library",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/dcastrodale/xstate-katas.git"
+  },
+  "author": "David Castrodale",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dcastrodale/xstate-katas/issues"
+  },
+  "homepage": "https://github.com/dcastrodale/xstate-katas#readme"
+}
