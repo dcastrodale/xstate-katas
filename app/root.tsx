@@ -32,13 +32,13 @@ export default function App() {
 
 function FullScreenLayout({ children }: { children?: ReactNode }): JSX.Element {
   return (
-    <section className="w-100 h-screen bg-slate-50 flex">{children}</section>
+    <section className="w-full h-screen bg-slate-50 flex">{children}</section>
   );
 }
 
 function NavMenu(): JSX.Element {
   return (
-    <nav className="w-1/5 h-100 p-3 bg-slate-800 text-slate-50">
+    <nav className="w-1/5 h-full p-3 bg-slate-800 text-slate-50">
       <h1 className="text-xl mb-3">Katas</h1>
 
       <ul>
@@ -48,7 +48,7 @@ function NavMenu(): JSX.Element {
             <li>
               <Link to="exercises/0_0">0-0: The Stoplight</Link>
             </li>
-            <li>0-2: The Tape Recorder</li>
+            <li>0-1: The Tape Recorder</li>
             {/* <li>0-3: The Random Number Generator</li> */}
             {/* <li>0-4: The Random Delay Button</li> */}
           </ul>
@@ -87,5 +87,5 @@ function NavMenu(): JSX.Element {
 }
 
 function Content({ children }: { children?: ReactNode }): JSX.Element {
-  return <section className="p-3 bg-slate-50">{children}</section>;
+  return <section className="p-3 bg-slate-50 w-4/5">{children}</section>;
 }

@@ -9,13 +9,15 @@ export function ExcerciseZeroScreen() {
   console.log(send);
 
   return (
-    <Stoplight
-      status={{
-        red: 'off',
-        amber: 'off',
-        green: 'off',
-      }}
-    />
+    <div className="w-full h-full flex justify-center items-center">
+      <Stoplight
+        status={{
+          red: 'off',
+          amber: 'off',
+          green: 'off',
+        }}
+      />
+    </div>
   );
 }
 
@@ -26,7 +28,7 @@ type Props = { status: Record<Colour, LightStatus> };
 
 function Stoplight({ status }: Props): JSX.Element {
   return (
-    <div className="w-12 border-black h-12 border-red-100">
+    <div className="flex flex-col w-[250px] h-auto p-[30px] border-solid border-black border-2 rounded-md gap-4 overflow-hidden">
       <ColouredLight colour="red" status={status.red} />
       <ColouredLight colour="amber" status={status.amber} />
       <ColouredLight colour="green" status={status.green} />
@@ -42,14 +44,16 @@ function ColouredLight({
   status: LightStatus;
 }) {
   return (
-    <div
-      className={twMerge(
-        'w-10 rounded-lg',
-        colour === 'red' && 'bg-red-700',
-        colour === 'amber' && 'bg-yellow', // TODO
-        colour === 'green' && 'bg-green-500', // TODO
-        status === 'off' && 'opacity-0' // TODO
-      )}
-    />
+    <div className="w-full aspect-square border-2 border-solid border-black rounded-full">
+      <div
+        className={twMerge(
+          'w-full h-full rounded-full',
+          colour === 'red' && 'bg-red-700',
+          colour === 'amber' && 'bg-amber-300', // TODO
+          colour === 'green' && 'bg-green-500', // TODO
+          status === 'off' && 'opacity-0' // TODO
+        )}
+      />
+    </div>
   );
 }
