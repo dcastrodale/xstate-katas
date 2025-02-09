@@ -1,35 +1,19 @@
 import { useMachine } from '@xstate/react';
 import { twMerge } from 'tailwind-merge';
 
-import { Drawer, ExcerciseContent, Sidebar, Text } from '@/components';
+import { ExcerciseContent } from '@/components';
 import { machine } from './machine';
+import { Description } from './description';
+
+export type Colour = 'red' | 'amber' | 'green';
+export type LightStatus = 'on' | 'off';
 
 export function ExcerciseZeroScreen() {
   let [state, send] = useMachine(machine);
 
   return (
     <>
-      <Sidebar>
-        <Drawer label="Challenge 1">
-          <Text>
-            The classic state machine example. Create a state machine that will
-            drive the stoplight. Assume that each light 'state' will be active
-            for five seconds.
-          </Text>
-
-          <Text>
-            Assume this is a North American style stoplight. This means that
-            there is <strong>no amber light before red</strong>. So, for
-            example, the stoplight will run
-            <ol type="1">
-              <li>Red</li>
-              <li>Green</li>
-              <li>Amber</li>
-              <li>Red</li>
-            </ol>
-          </Text>
-        </Drawer>
-      </Sidebar>
+      <Description />
 
       <ExcerciseContent>
         <Stoplight
@@ -39,13 +23,11 @@ export function ExcerciseZeroScreen() {
             green: 'off',
           }}
         />
+        <OverrideButtons handleClick={() => {}} />
       </ExcerciseContent>
     </>
   );
 }
-
-export type Colour = 'red' | 'amber' | 'green';
-export type LightStatus = 'on' | 'off';
 
 type Props = { status: Record<Colour, LightStatus> };
 
@@ -55,6 +37,36 @@ function Stoplight({ status }: Props): JSX.Element {
       <ColouredLight colour="red" status={status.red} />
       <ColouredLight colour="amber" status={status.amber} />
       <ColouredLight colour="green" status={status.green} />
+    </div>
+  );
+}
+
+function OverrideButtons({
+  handleClick,
+}: {
+  handleClick: (colour: Colour) => void;
+}) {
+  return (
+    <div className="m-10 p-6 border-2 border-slate-800 bg-slate-50 flex flex-col justify-center items-center gap-4">
+      <h1 className="font-bold text-xl">Override Buttons</h1>
+      <button
+        className="w-4/5 bg-slate-200 p-2 rounded-lg hover:cursor-pointer border-1 border-slate-400 transition-colors active:bg-slate-300"
+        onClick={() => handleClick('red')}
+      >
+        Green
+      </button>
+      <button
+        className="w-4/5 bg-slate-200 p-2 rounded-lg hover:cursor-pointer border-1 border-slate-400 transition-colors active:bg-slate-300"
+        onClick={() => handleClick('red')}
+      >
+        Amber
+      </button>
+      <button
+        className="w-4/5 bg-slate-200 p-2 rounded-lg hover:cursor-pointer border-1 border-slate-400 transition-colors active:bg-slate-300"
+        onClick={() => handleClick('red')}
+      >
+        Red
+      </button>
     </div>
   );
 }
@@ -72,9 +84,9 @@ function ColouredLight({
         className={twMerge(
           'w-full h-full rounded-full',
           colour === 'red' && 'bg-red-700',
-          colour === 'amber' && 'bg-amber-300', // TODO
-          colour === 'green' && 'bg-green-500', // TODO
-          status === 'off' && 'opacity-0' // TODO
+          colour === 'amber' && 'bg-amber-300',
+          colour === 'green' && 'bg-green-500',
+          status === 'off' && 'opacity-0'
         )}
       />
     </div>

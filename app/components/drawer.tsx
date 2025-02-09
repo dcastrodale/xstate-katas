@@ -20,7 +20,7 @@ export function Drawer({ label, children, initial }: Props): JSX.Element {
   );
 
   return (
-    <div className="w-auto flex flex-col gap-6">
+    <div className="w-auto flex flex-col gap-6 border-b-1 border-slate-400">
       <div
         className="w-auto flex items-center hover:cursor-pointer"
         onClick={() => setDrawerStatus(toggle(drawerStatus))}
@@ -31,7 +31,7 @@ export function Drawer({ label, children, initial }: Props): JSX.Element {
       <div
         className={twMerge(
           'flex flex-col gap-6 overflow-hidden max-h-0 transition-all',
-          drawerStatus === 'open' && 'max-h-auto'
+          drawerStatus === 'open' && 'max-h-auto pb-8'
         )}
       >
         {children}
