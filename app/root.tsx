@@ -1,4 +1,4 @@
-import { Links, Meta, Outlet, Scripts } from '@remix-run/react';
+import { Links, Meta, Outlet, Scripts, Link } from '@remix-run/react';
 
 import type { LinksFunction } from '@remix-run/node';
 import stylesheet from '../tailwind.css?url';
@@ -45,11 +45,12 @@ function NavMenu(): JSX.Element {
         <li>
           <h3 className="font-bold text-lg">0. State Machine Basics</h3>
           <ul className="p-3">
-            <li>0-0: The Stoplight</li>
-            <li>0-1: The Automated Stoplight</li>
+            <li>
+              <Link to="exercises/0_0">0-0: The Stoplight</Link>
+            </li>
             <li>0-2: The Tape Recorder</li>
-            <li>0-3: The Random Number Generator</li>
-            <li>0-4: The Random Delay Button</li>
+            {/* <li>0-3: The Random Number Generator</li> */}
+            {/* <li>0-4: The Random Delay Button</li> */}
           </ul>
         </li>
 
